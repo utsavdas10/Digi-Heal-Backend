@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'utsavdas10',
+    password: process.env.DB_PASSWORD,
     database: 'Digi_Heal',
 });
 

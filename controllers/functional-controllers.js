@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mysql = require('mysql');
 const HttpError = require('../models/http-error');
 
@@ -5,7 +6,7 @@ const HttpError = require('../models/http-error');
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'utsavdas10',
+    password: process.env.DB_PASSWORD,
     database: 'Digi_Heal',
 });
 

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 
@@ -5,7 +6,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'utsavdas10',
+    password: process.env.DB_PASSWORD,
     database: 'Digi_Heal',
     insecureAuth : true
 });
