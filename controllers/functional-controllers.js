@@ -12,6 +12,30 @@ const db = mysql.createConnection({
 
 
 
+const getUser = async (req, res, next) => {
+    const email = req.params.email;
+
+    const sql = `SELECT * FROM users WHERE email = '${email}'`;
+    try {
+        db.query(sql, (err, result) => {
+            if (!result || result.length === 0) {
+                const error = new HttpError('Could not find user for the provided email', 404);
+                return next(error);
+            }
+            result[0].password = null;
+            res.json({ 
+                user: result[0]
+            });
+        });
+    } 
+    catch (err) {
+        const error = new HttpError('Could not fetch user', 500);
+        return next(error);
+    }
+
+};
+
+
 // Define the function for handling health metrics
 const getHealthMetrics = async (req, res, next) => {
     const  email  = req.params.email;
@@ -405,6 +429,7 @@ const setProgress = async (req, res, next) => {
 
 // Export the functional controller object
 module.exports = {
+    getUser,
     getHealthMetrics,
     postHealthMetrics,
     getNutritionData,

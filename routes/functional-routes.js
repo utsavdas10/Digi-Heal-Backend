@@ -3,6 +3,8 @@ const functionalController = require('../controllers/functional-controllers');
 
 
 // Initializing the routes
+router.get('/:email', functionalController.getUser);
+
 router.get('/:email/health-metrics', functionalController.getHealthMetrics);
 
 router.post('/health-metrics', functionalController.postHealthMetrics);
