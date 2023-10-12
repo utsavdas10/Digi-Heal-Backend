@@ -1,10 +1,11 @@
 {
   "name": "digi-heal-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "BackEnd Service for Digi-Heal",
   "main": "app.js",
   "scripts": {
     "test": "npm start",
+    "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "author": "utsavdas10",
