@@ -365,35 +365,55 @@ const setProgress = async (req, res, next) => {
                         return next(error);
                     }
                 }
-                
+                else {
                 // let c = result[0].current + current ;
-                sql = `UPDATE progress SET current = '${current}' WHERE email = '${email}'`;
-                try {
-                    db.query(sql, (err, resu) => {
-                        if (!resu || resu.length === 0) {
-                            const error = new HttpError('Could not set progress', 404);
-                            return next(error);
-                        }
+                    sql = `UPDATE progress SET current = '${current}' WHERE email = '${email}'`;
+                    try {
+                        db.query(sql, (err, resu) => {
+                            if (!resu || resu.length === 0) {
+                                const error = new HttpError('Could not set progress', 404);
+                                return next(error);
+                            }
 
-                        res.status(200).json({
-                            message: "Progress set successfully",
-                            result: resu
+                            res.status(200).json({
+                                message: "Progress set successfully",
+                                result: resu
+                            });
                         });
-                    });
-                } 
-                catch (err) {
-                    const error = new HttpError('Could not set progress', 500);
-                    return next(error);
+                    } 
+                    catch (err) {
+                        const error = new HttpError('Could not set progress', 500);
+                        return next(error);
+                    }
                 }
             }
             else {
                 const new_current = result[0].current + current;
-                if (new_current <= result[0].goal) {
-                    console.log(new_current >= result[0].goal);
-                    sql = `UPDATE progress SET current = '${new_current}' WHERE email = '${email}'`;
+                if (new_current >= result[0].goal) {
+                    const goal = result[0].goal;
+                    sql = `UPDATE progress SET current = '${goal}' WHERE email = '${email}'`;
                     try {
                         db.query(sql, (err, resu) => {
 
+                            if (!resu || resu.length === 0) {
+                                const error = new HttpError('Could not update progress', 404);
+                                return next(error);
+                            }
+                            res.status(200).json({
+                                message: "Hoorahh! You have reached your goal! Hope you set a new one!",
+                                result: resu
+                            });
+                        });
+                    } 
+                    catch (err) {
+                        const error = new HttpError('Could not update progress', 500);
+                        return next(error);
+                    }
+                }
+                else {
+                    sql = `UPDATE progress SET current = '${new_current}' WHERE email = '${email}'`;
+                    try {
+                        db.query(sql, (err, resu) => {
                             if (!resu || resu.length === 0) {
                                 const error = new HttpError('Could not update progress', 404);
                                 return next(error);
@@ -408,25 +428,6 @@ const setProgress = async (req, res, next) => {
                         const error = new HttpError('Could not update progress', 500);
                         return next(error);
                     }
-                }
-                
-                sql = `UPDATE progress SET current = '${result[0].goal}' WHERE email = '${email}'`;
-                try {
-                    db.query(sql, (err, resu) => {
-
-                        if (!resu || resu.length === 0) {
-                            const error = new HttpError('Could not update progress', 404);
-                            return next(error);
-                        }
-                        res.status(200).json({
-                            message: "Hoorahh! You have reached your goal! Hope you set a new one!",
-                            result: resu
-                        });
-                    });
-                } 
-                catch (err) {
-                    const error = new HttpError('Could not update progress', 500);
-                    return next(error);
                 }
             }
         });
