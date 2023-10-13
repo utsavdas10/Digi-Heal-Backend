@@ -34,36 +34,65 @@ const signup = async (req, res) => {
         return next(error);
     }
 
+    let token;
+    db.query('START TRANSACTION', (err, result) => {
+        if (err) {
+            return res.status(500).json({ message: err });
+        }
+    });
+    db.query('SAVEPOINT A', (err, result) => {
+        if (err) {
+            return res.status(500).json({ message: err });
+        }
+    });
+    db.query('INSERT INTO users SET ?', user, (err, result) => {
+        if (err) {
+            return res.status(500).json({ message: err });
+        }
+    });
+    db.query('SAVEPOINT B', (err, result) => {
+        if (err) {
+            db.query('ROLLBACK TO SAVEPOINT A');
+            return res.status(500).json({ message: err });
+        }
+    });
+    db.query('INSERT INTO health_metrics SET ?', {email: email}, (err, result) => {
+        if (err) {
+            db.query('ROLLBACK TO SAVEPOINT A');
+            return res.status(500).json({ message: err });
+        }
+    });
+    db.query('SAVEPOINT C', (err, result) => {
+        if (err) {
+            db.query('ROLLBACK TO SAVEPOINT A');
+            return res.status(500).json({ message: err });
+        }
+    });
     try {
-        db.query('INSERT INTO users SET ?', user, (err, result) => {
-            if (err) {
-                return res.status(500).json({ message: err });
-            }
-
-            let token;
-            try{
-                token = jwt.sign(
-                    {userId: email},
-                    process.env.JWT_KEY,
-                    {expiresIn: '720h'}
-                );
-            }
-            catch (err) {
-                const error = new HttpError('Registered but failed to generate token, try logging in', 500);
-                return next(error)    
-            }
-
-            return res.status(201).json({ 
-                message: 'User created successfully',
-                id: email,
-                token: token
-            });
-        });
+        token = jwt.sign(
+            {userId: email},
+            process.env.JWT_KEY,
+            {expiresIn: '720h'}
+        );
     }
-    catch(err) {
-        const error = new HttpError('Signing up failed, please try again later', 500);
-        return next(error);
+    catch (err) {
+        db.query('ROLLBACK TO SAVEPOINT A');
+        const error = new HttpError('Registered but failed to generate token, try logging in', 500);
+        return next(error)    
     }
+    db.query('COMMIT', (err, result) => {
+        if (err) {
+            db.query('ROLLBACK TO SAVEPOINT A');
+            return res.status(500).json({ message: err });
+        }
+    });
+
+
+    return res.status(201).json({ 
+        message: 'User created successfully',
+        id: email,
+        token: token
+    });
 };
 
 const login = async (req, res) => {
