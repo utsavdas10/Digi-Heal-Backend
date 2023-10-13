@@ -174,7 +174,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"deya@gmail.com\",\r\n    \"goal\": 250\r\n}",
+							"raw": "{\r\n    \"email\": \"deya@gmail.com\",\r\n    \"name\": \"dance\",\r\n    \"goal\": 500\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -196,7 +196,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"deya@gmail.com\",\r\n    \"current\": 100\r\n}",
+							"raw": "{\r\n    \"email\": \"deya@gmail.com\",\r\n    \"current\": 300\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -218,7 +218,12 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": "http://localhost:8000/api/functional/deya@gmail.com/progress"
 					},
