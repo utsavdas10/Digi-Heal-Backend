@@ -17,11 +17,11 @@ router.get('/:email/workout-data', functionalController.getWorkoutData);
 
 router.post('/workout-data', functionalController.postWorkoutData);
 
-// router.get('/:email/progress', functionalController.getProgress);
+router.get('/:email/progress', functionalController.getProgress);
 
-// router.post('/setGoal', functionalController.setGoal);
+router.post('/setGoal', functionalController.setGoal);
 
-// router.post('/setProgress', functionalController.setProgress);
+router.post('/setProgress', functionalController.setProgress);
 
 
 module.exports = router;
