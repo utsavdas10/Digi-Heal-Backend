@@ -174,7 +174,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"deya@gmail.com\",\r\n    \"name\": \"dance\",\r\n    \"goal\": 500\r\n}",
+							"raw": "{\r\n    \"email\": \"deya@gmail.com\",\r\n    \"name\": \"dance\",\r\n    \"goal\": 50\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -196,7 +196,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"deya@gmail.com\",\r\n    \"current\": 300\r\n}",
+							"raw": "{\r\n    \"email\": \"deya@gmail.com\",\r\n    \"current\": 5\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
