@@ -149,9 +149,11 @@ const postNutritionData = async (req, res, next) => {
         email,
         food,
         calories,
-        date,
-        time
+        date_time
     } = req.body;
+
+    const date = date_time.split('T')[0];
+    const time = date_time.split('T')[1];
 
     const query = `INSERT INTO nutritions (email, food, calories, date, time) VALUES ('${email}', '${food}', '${calories}', '${date}', '${time}')`;
     try {
@@ -370,7 +372,6 @@ const setProgress = async (req, res, next) => {
                     }
                 }
                 else {
-                // let c = result[0].current + current ;
                     sql = `UPDATE progress SET current = '${current}' WHERE email = '${email}'`;
                     try {
                         db.query(sql, (err, resu) => {
@@ -416,8 +417,6 @@ const setProgress = async (req, res, next) => {
                 }
                 else {
                     sql = `UPDATE progress SET current = '${new_current}' WHERE email = '${email}'`;
-                    // console.log(type(new_current));
-                    console.log(new_current);
                     try {
                         db.query(sql, (err, resu) => {
                             if (!resu || resu.length === 0) {
