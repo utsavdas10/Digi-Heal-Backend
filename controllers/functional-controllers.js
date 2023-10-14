@@ -260,7 +260,7 @@ const getProgress = async (req, res, next) => {
 
 
 const setGoal = async (req, res, next) => {
-    const {
+    let {
         email,
         name,
         goal
@@ -330,7 +330,7 @@ const setGoal = async (req, res, next) => {
 
 
 const setProgress = async (req, res, next) => {
-    const {
+    let {
         email,
         current
     } = req.body;
@@ -416,6 +416,8 @@ const setProgress = async (req, res, next) => {
                 }
                 else {
                     sql = `UPDATE progress SET current = '${new_current}' WHERE email = '${email}'`;
+                    // console.log(type(new_current));
+                    console.log(new_current);
                     try {
                         db.query(sql, (err, resu) => {
                             if (!resu || resu.length === 0) {
