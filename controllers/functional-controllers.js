@@ -266,6 +266,8 @@ const setGoal = async (req, res, next) => {
         goal
     } = req.body;
 
+    goal = parseInt(goal);
+
     let sql = `SELECT * FROM progress WHERE email = '${email}'`
     try {
         db.query(sql, (err, result) => {
@@ -332,6 +334,8 @@ const setProgress = async (req, res, next) => {
         email,
         current
     } = req.body;
+
+    current = parseInt(current);
 
     let sql = `SELECT * FROM progress WHERE email = '${email}'`
     try {
