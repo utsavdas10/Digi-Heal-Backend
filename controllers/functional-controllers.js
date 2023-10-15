@@ -149,8 +149,10 @@ const postNutritionData = async (req, res, next) => {
         email,
         food,
         calories,
-        date_time
+        date,
+        time
     } = req.body;
+
 
     const query = `INSERT INTO nutritions (email, food, calories, date, time) VALUES ('${email}', '${food}', '${calories}', '${date}', '${time}')`;
     try {
