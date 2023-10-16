@@ -52,6 +52,3 @@ Overall, a website for keeping track of nutrition, workouts, health metrics, and
 <h5>Others: <h5> <p>GitHub, Canva, ImagenAI, MojoAI</p>
 
 
-<h2> Architecture: </h2>
-
-![Architecture](Level_1.drawio.png)
