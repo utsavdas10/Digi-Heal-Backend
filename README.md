@@ -54,4 +54,4 @@ Overall, a website for keeping track of nutrition, workouts, health metrics, and
 
 <h2> Architecture: </h2>
 
-![Architecture](Level_1.drawio.png)
+![Architecture](./Level_1.drawio.png)
