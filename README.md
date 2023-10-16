@@ -5,6 +5,10 @@
 <h2>Project Related Docs :</h2> <p>https://drive.google.com/drive/folders/1fX1IZkOnXRAHRdgkiH15FgKkdelCEHUG?usp=sharing </p>
 
 
+<h1>*NOTE*</h1>
+<p> Project not deployed on the internet due to teh database free tier limitations of the cloud providers. Project has been tested locally as the database is local and not hosted on the cloud. Demo is available on the google drive link above. </p>
+
+
 <h2>General Description: </h2>
 
 
@@ -27,7 +31,7 @@ Overall, a website for keeping track of nutrition, workouts, health metrics, and
 
 <h2>Features:</h2>
 
-<li>
+<p>
 •	Nutrition tracking: The website should allow users to track their food intake, calorie intake, and nutritional information. This can be done by adding food items to a food diary, scanning food barcodes, or importing data from other food tracking apps. The website should also provide users with access to a database of food items with nutritional information.
 
 •	Workout tracking: The website should allow users to track their workouts, including exercises, sets, reps, and weight. The website should also provide users with access to a database of exercises with instructions and videos.
@@ -36,4 +40,18 @@ Overall, a website for keeping track of nutrition, workouts, health metrics, and
 
 •	Progress tracking: The website should allow users to track their progress over time and set and achieve goals. For example, users could set goals for weight loss, muscle gain, or increasing their cardiovascular fitness. The website should provide users with charts and graphs to visualise their progress.
 
-</li>
+</p>
+
+
+<h2>Tech Stack: </h2>
+
+<h5>Backend :</h5>  <p>Express Js, NodeJs, MySQL </p>
+<h5>Frontend: <h5> <p>ReactJS, TailwindCss, MaterialUI</p>
+<h5>Database: <h5> <p>MySQL</p>
+<h5>Testing: <h5> <p>Postman</p>
+<h5>Others: <h5> <p>GitHub, Canva, ImagenAI, MojoAI</p>
+
+
+<h2> Architecture: </h2>
+
+![Architecture](Level_1.drawio.png)
