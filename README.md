@@ -45,8 +45,8 @@ Overall, a website for keeping track of nutrition, workouts, health metrics, and
 
 <h2>Tech Stack: </h2>
 
-Backend :  Express Js, NodeJs, MySQL 
-Frontend: ReactJS, TailwindCss, MaterialUI
-Database: MySQL
-Testing: Postman
-Others: GitHub, Canva, ImagenAI, MojoAI
+<p>Backend :  Express Js, NodeJs, MySQL </p>
+<p>Frontend: ReactJS, TailwindCss, MaterialUI</p>
+<p>Database: MySQL</p>
+<p>Testing: Postman</p>
+<p>Others: GitHub, Canva, ImagenAI, MojoAI</p>
