@@ -50,5 +50,3 @@ Overall, a website for keeping track of nutrition, workouts, health metrics, and
 <h5>Database: <h5> <p>MySQL</p>
 <h5>Testing: <h5> <p>Postman</p>
 <h5>Others: <h5> <p>GitHub, Canva, ImagenAI, MojoAI</p>
-
-
